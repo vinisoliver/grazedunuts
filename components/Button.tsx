@@ -1,24 +1,54 @@
-import { forwardRef } from 'react';
-import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { forwardRef } from 'react'
+import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
 
-type ButtonProps = {
-  title: string;
-} & TouchableOpacityProps;
+type Props = {
+  children: string,
+  type: "destructive" | "primary" | "secondary" | "light",
+} & TouchableOpacityProps 
 
-export const Button = forwardRef<View, ButtonProps>(({ title, ...touchableProps }, ref) => {
+export const Button = forwardRef<View, Props>(({ children, type, ...touchableProps }, ref) => {
+  let styles
+  switch (type) {
+    case "destructive": styles = variants.destructive 
+    break;
+    case "primary": styles = variants.primary 
+    break;
+    case "secondary": styles = variants.secondary
+    break;
+    case "light": styles = variants.light
+    break;
+  }
+
   return (
     <TouchableOpacity
       ref={ref}
       {...touchableProps}
-      className={`${styles.button} ${touchableProps.className}`}>
-      <Text className={styles.buttonText}>{title}</Text>
+      className={`
+        h-[36px] w-full items-center justify-center rounded-lg
+        ${styles.button} ${touchableProps.className}
+      `}>
+      <Text className={styles.text}>{children}</Text>
     </TouchableOpacity>
-  );
-});
+  )
+})
 
-Button.displayName = 'Button';
+Button.displayName = 'Button'
 
-const styles = {
-  button: 'items-center bg-indigo-500 rounded-[28px] shadow-md p-4',
-  buttonText: 'text-white text-lg font-semibold text-center',
-};
+const variants = {
+  destructive: {
+    button: 'bg-unavailable-light',
+    text: 'text-unavailable font-paragraph',
+  },
+  primary: {
+    button: 'bg-primary',
+    text: 'text-background font-paragraph',
+  },
+  secondary: {
+    button: 'bg-secondary-primary',
+    text: 'text-background font-paragraph',
+  },
+  light: {
+    button: 'bg-secondary-background',
+    text: 'text-primary font-paragraph',
+  },
+}

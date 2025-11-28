@@ -1,7 +1,14 @@
-import '../global.css';
+import '../global.css'
 
-import { Stack } from 'expo-router';
+import { useEffect } from 'react'
+import { Stack } from 'expo-router'
+
+import { connectToDb } from '@/db/connect'
 
 export default function Layout() {
-  return <Stack />;
+  useEffect(() => {
+    connectToDb()
+  }, [])
+
+  return <Stack screenOptions={{ headerShown: false }} />
 }
