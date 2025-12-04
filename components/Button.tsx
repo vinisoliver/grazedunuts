@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
 
 type Props = {
-  children: string,
+  children: React.ReactNode,
   type: "destructive" | "primary" | "secondary" | "light",
 } & TouchableOpacityProps 
 

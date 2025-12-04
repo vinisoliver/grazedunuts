@@ -39,7 +39,7 @@ export default function LoginPage() {
          return setPassword({ value: password.value, error: "E-mail ou senha incorretos." })
       }
 
-      router.push("/pages/store/catalogue")
+      router.push("/pages/protected/store/catalogue")
    }
    
    return (

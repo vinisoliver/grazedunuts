@@ -53,7 +53,7 @@ export default function RegisterPage() {
          return setEmail({ value: email.value, error: "Já existe um cliente com este email" })
       }
 
-      router.push("/pages/store/catalogue")
+      router.push("/pages/protected/store/catalogue")
    }
    
    return (
