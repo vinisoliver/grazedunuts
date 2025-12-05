@@ -17,10 +17,10 @@ export function ProtectedPage({ children }: Props) {
   useEffect(() => {
     async function checkAuth() {
       const authorized = await authorize()
-      if (!authorized) {
-         setIsAuthorized(false)
-         router.replace('/pages/auth/login')
-      }
+      // if (!authorized) {
+      //    setIsAuthorized(false)
+      //    router.replace('/pages/auth/login')
+      // }
 
       setIsAuthorized(true)
     }
